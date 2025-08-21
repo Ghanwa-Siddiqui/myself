@@ -1,0 +1,336 @@
+:root {
+  --bg: #0f172a;
+  --card: #1a2238;
+  --text: #e5e7eb;
+  --muted: #94a3b8;
+  --border: #2d3748;
+  --shadow: 0 8px 24px rgba(0, 0, 0, .35);
+  --blue: #60a5fa;
+  --green: #4ade80;
+  --green-line: rgba(34, 197, 94, .75);
+  --purple: #a855f7;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body, #root {
+  min-height: 100%;
+  background: var(--bg);
+  color: var(--text);
+  font-family: Inter, system-ui, Segoe UI, Roboto, Arial, sans-serif;
+  scroll-behavior: smooth;
+}
+
+.page {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  padding: 32px;
+}
+
+.container {
+  width: 100%;
+  max-width: 980px;
+}
+
+/* Header */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--border);
+}
+.title {
+  font-size: 36px;
+  color: #fff;
+}
+.muted {
+  color: var(--muted);
+}
+
+/* Hamburger Menu */
+.menuButton {
+  width: 44px;
+  height: 36px;
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  cursor: pointer;
+  box-shadow: var(--shadow);
+}
+.menuButton span {
+  width: 20px;
+  height: 2px;
+  background: #e5e7eb;
+  border-radius: 2px;
+}
+.menuButton.active {
+  border-color: var(--blue);
+}
+
+/* Overlay */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, .0);
+  pointer-events: none;
+  transition: background .25s ease;
+  z-index: 999;
+}
+.overlay.show {
+  background: rgba(0, 0, 0, .45);
+  pointer-events: auto;
+}
+
+/* Drawer */
+.drawer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 260px;
+  background: var(--card);
+  border-right: 1px solid var(--border);
+  transform: translateX(-100%);
+  transition: transform .25s ease;
+  z-index: 1000;
+  padding: 18px 16px;
+  box-shadow: var(--shadow);
+}
+.drawer.open {
+  transform: translateX(0);
+}
+.drawer .closeBtn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 36px;
+  height: 36px;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--text);
+  font-size: 22px;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: .2s;
+}
+.drawer .closeBtn:hover {
+  background: rgba(96,165,250,.15);
+  border-color: var(--blue);
+  color: #fff;
+}
+.drawer ul {
+  list-style: none;
+  margin: 48px 0 0;
+  padding: 0;
+}
+.drawer li {
+  margin: 8px 0;
+}
+.drawer a {
+  display: block;
+  text-decoration: none;
+  color: var(--text);
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid transparent;
+  transition: .2s;
+  font-weight: 600;
+}
+.drawer a:hover {
+  border-color: var(--blue);
+  background: rgba(96,165,250,.12);
+}
+
+/* Card */
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 22px;
+  margin: 18px 0;
+  box-shadow: var(--shadow);
+}
+.sectionTitle {
+  margin-bottom: 12px;
+  font-size: 20px;
+  color: #cbd5e1;
+}
+
+/* Education */
+.row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.col {
+  flex: 1 1 300px;
+}
+.right {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: flex-end;
+}
+.badge {
+  background: rgba(96,165,250,.2);
+  border: 1px solid rgba(96,165,250,.4);
+  color: #bfdbfe;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+}
+.badge.alt {
+  background: rgba(34,197,94,.2);
+  border-color: rgba(34,197,94,.4);
+  color: #bbf7d0;
+}
+
+/* Skills */
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.chip {
+  background: #1e293b;
+  border: 1px solid #334155;
+  color: #dbeafe;
+  padding: 8px 12px;
+  border-radius: 999px;
+  font-size: 13px;
+  transition: .3s;
+}
+.chip:hover {
+  border-color: var(--blue);
+  color: #fff;
+}
+
+/* Experience */
+.timeline {
+  position: relative;
+  margin-left: 20px;
+  padding-left: 20px;
+  border-left: 2px solid var(--green-line);
+}
+.timelineItem {
+  position: relative;
+  margin-bottom: 20px;
+}
+.dot {
+  position: absolute;
+  left: -31px;
+  top: 8px;
+  width: 14px;
+  height: 14px;
+  background: var(--green);
+  border-radius: 50%;
+  border: 2px solid #065f46;
+}
+.itemTitle {
+  font-weight: 700;
+  color: #86efac;
+  font-size: 16px;
+  margin-bottom: 3px;
+}
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 6px;
+}
+.tag {
+  background: rgba(74,222,128,.25);
+  border: 1px solid rgba(74,222,128,.5);
+  padding: 5px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  color: #bbf7d0;
+  font-weight: 600;
+}
+
+/* Projects */
+.projects {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 16px;
+}
+.project {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: var(--shadow);
+  transition: .2s;
+}
+.project:hover {
+  transform: translateY(-5px);
+  border-color: rgba(168,85,247,.7);
+  box-shadow: 0 14px 30px rgba(168,85,247,.3);
+}
+.projectTitle {
+  font-weight: 700;
+  font-size: 16px;
+  color: #e9d5ff;
+}
+.projectDesc {
+  color: #ddd6fe;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* Footer */
+.footer {
+  margin: 28px 0;
+  color: var(--muted);
+  text-align: center;
+  font-size: 13px;
+}
+
+/* Loading + Alerts */
+.loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 32px;
+  max-width: 320px;
+  margin: 60px auto;
+  box-shadow: var(--shadow);
+}
+.spinner {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 3px solid rgba(255,255,255,.15);
+  border-top-color: var(--blue);
+  animation: spin 1s linear infinite;
+}
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+.alert {
+  background: rgba(244,63,94,.15);
+  border: 1px solid rgba(244,63,94,.35);
+  color: #fecdd3;
+  padding: 12px 14px;
+  border-radius: 12px;
+}
